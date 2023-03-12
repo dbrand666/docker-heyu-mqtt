@@ -24,8 +24,8 @@ else
   log "CM11 is enabled"
 fi
   
-# Start heyu engine
-heyu engine
+# Start heyu engine, or restart after container restart
+heyu engine || heyu restart
 
 # Run main script
 python -u x10mqtt.py

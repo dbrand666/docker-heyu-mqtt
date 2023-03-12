@@ -230,10 +230,10 @@ client.loop_start()
 # We run 'heyu monitor' in the background to monitor for any X10 changes outside of us (e.g. X10 remotes)
 # This way, we can send MQTT status changes if something does change.
 
-# Regular expressions used to catch X10 updates, e.g. from X10 remotes
-
-rercviaddr = re.compile(r"rcvi addr unit.+hu ([A-P][0-9]+)")
-rercvifunc = re.compile(r"rcvi func.*(On|Off) :")
+# Regular expressions used to catch X10 updates, e.g. from X10 remotes, triggers on the module, or command line commands.
+# See https://github.com/HeyuX10Automation/heyu/blob/902a4ef46d857de7e7fc157ea7c3f2562f4f1624/release_notes.txt#L527-L534
+rercviaddr = re.compile(r"(?:rcvi|rcvt|sndc|snds|sndm|sndt) addr unit.+hu ([A-P][0-9]+)")
+rercvifunc = re.compile(r"(?:rcvi|rcvt|sndc|snds|sndm|sndt) func.*(On|Off) :")
 
 
 # Start the monitor process, which runs all the time.
